@@ -17,17 +17,17 @@ rule start = parse
      | blank { start lexbuf }
      | "/*" { comment_depth :=1; comment lexbuf; start lexbuf }
      | "int" { INT }
-     | "+" { PLUS }
-     | "-" { MINUS }
-     | "*" { STAR }
-     | "/" { SLASH }
-     | "=" { EQUAL }
+     | '+' { PLUS }
+     | '-' { MINUS }
+     | '*' { STAR }
+     | '/' { SLASH }
+     | '=' { EQUAL }
      | "==" { EQUALEQUAL }
      | "<=" { LE }
      | "<" { LT }
      | ">=" { GE }
      | ">" { GT }
-     | "!" { NOT }
+     | '!' { NOT }
      | "&&" { AND }
      | "||" { OR }
      | "if" { IF }
@@ -36,13 +36,13 @@ rule start = parse
      | "do" { DO }
      | "read" { READ }
      | "print" { PRINT }
-     | ";" { SEMICOLON }
-     | "{" { LBRACE }
-     | "}" { RBRACE }
-     | "[" { LBLOCK }
-     | "]" { RBLOCK }
-     | "(" { LPAREN }
-     | ")" { RPAREN }
+     | ';' { SEMICOLON }
+     | '{' { LBRACE }
+     | '}' { RBRACE }
+     | '[' { LBLOCK }
+     | ']' { RBLOCK }
+     | '(' { LPAREN }
+     | ')' { RPAREN }
      | id { ID(Lexing.lexeme lexbuf) }
      | number { NUM (int_of_string(Lexing.lexeme lexbuf)) }
      | eof { EOF }

@@ -17,6 +17,9 @@
 %left MINUS
 %left STAR
 %left SLASH
+%left SEMICOLON
+
+%right NOT
 
 %start program
 %type <S.program> program
@@ -74,7 +77,7 @@ exp:
     | exp STAR exp { S.MUL($1, $3) }
     | exp SLASH exp { S.DIV($1, $3) }
     | MINUS exp { S.MINUS($2) }
-    | exp EQUAL EQUAL exp { S.EQ($1, $4) }
+    | exp EQUALEQUAL exp { S.EQ($1, $3) }
     | exp LT exp { S.LT($1, $3) }
     | exp LE exp { S.LE($1, $3) }
     | exp GT exp { S.GT($1, $3) }
